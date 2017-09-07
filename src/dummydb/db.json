@@ -1,0 +1,14 @@
+{
+    "users":[
+        {
+            "id":"1",
+            "email":"daminisinha64@gmail.com",
+            "password":"damini"
+        },
+        {
+            "id":"2",
+            "email":"charliechaplin@gmail.com",
+            "password":"charlie"
+        }
+    ]
+}
