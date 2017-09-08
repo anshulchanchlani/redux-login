@@ -10,19 +10,24 @@ export function authenticateUser(email, password) {
     dispatch(authenticating(true));
     dispatch(authenticated(false));
     dispatch(authenticationError(null));
-
+    console.log("Calling this db shit")
     if(db.users.forEach(function(user){
-        if(user.email==email && user.password == password){
+        if(user.email===email && user.password === password){
             flag= true;
+            console.log("inside this db shit")
             dispatch(authenticating(false))
             dispatch(authenticated(true));
-            console.log("authenticated!!!!")
+            dispatch(authenticationError(null))
             return;
             
         }
     }))
-    if(!flag){
-        dispatch(authenticationError("Invalid User Credentials"))
+    console.log("")
+    if(flag===false){
+      console.log("FLAG IS FALSE")
+        dispatch(authenticationError("Invalid User Credentials"));
+        dispatch(authenticating(false));
+        dispatch(authenticated(false));
     }
   }
 }
@@ -30,20 +35,22 @@ export function authenticateUser(email, password) {
 function authenticating(isAuthenticating) {
   return {
     type: SET_AUTHENTICATING,
-    payload: isAuthenticating
+    isAuthenticating
   };
 }
 
 function authenticated(isAuthenticated) {
+  console.log("Action is authenticated")
   return {
     type: SET_AUTHENTICATED,
-    payload: isAuthenticated
+    isAuthenticated
   };
 }
 
 function authenticationError(authenticationError) {
+  console.log("Authentication Error in action", authenticationError)
   return {
     type: SET_AUTHENTICATION_ERROR,
-    payload:authenticationError
+    authenticationError
   }
 }

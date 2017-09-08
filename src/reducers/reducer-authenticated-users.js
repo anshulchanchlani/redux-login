@@ -1,6 +1,7 @@
 const SET_AUTHENTICATING = 'SET_AUTHENTICATING';
 const SET_AUTHENTICATED = 'SET_AUTHENTICATED';
 const SET_AUTHENTICATION_ERROR = 'SET_AUTHENTICATION_ERROR';
+const GET_AUTHENTICATED = 'GET_AUTHENTICATED';
 export default function reducer(state = {
   isAuthenticated: false,
   isAuthenticating: false,
@@ -18,10 +19,15 @@ export default function reducer(state = {
       });
 
     case SET_AUTHENTICATION_ERROR:
+    
       return Object.assign({}, state, {
+        
         authenticationError: action.authenticationError
       });
-
+    
+    case GET_AUTHENTICATED:
+      return state;
+     
     default:
       return state;
   }
